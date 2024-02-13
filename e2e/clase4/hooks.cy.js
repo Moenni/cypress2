@@ -5,8 +5,8 @@ describe("hooks",()=>{
     let tareas = {}
     before (()=>{
         usuario= {
-            "user": "nicomomo1",
-            "pass": "Saibaba321@"
+            "user": "pushingit",
+            "pass": "123456!"
         }
       tareas ={
         'tarea1' : "hacer las compras",
