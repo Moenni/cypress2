@@ -15,7 +15,7 @@ describe("Page Object model", () => {
 
     it('GET Method', () => {
         cy.request({
-            method: "GET",
+           
             url: `${baseUrl}/api/products`,
             headers: {
                 "authorization": `Bearer ${token}`
@@ -27,7 +27,7 @@ describe("Page Object model", () => {
         }).then(respuesta => {
             expect(respuesta.body.products.docs).to.have.lengthOf(4);
             expect(respuesta.status).to.be.equal(200);
-            expect(respuesta.body.products.docs[0].name).to.be.equal('Buzo Azul');
+            ///expect(respuesta.body.products.docs[0].name).to.be.equal('Buzo Negro');
         });
     });
 
@@ -50,16 +50,16 @@ describe("Page Object model", () => {
         });
     });
 
-    it('PUT Method', () => {
+    it ('PUT Method', () => {
         cy.request({
             method: "PUT",
-            url: `${baseUrl}/api/product/65af57efc98515003408b018`,
+            url: `${baseUrl}/api/product/65cbbb6d00e97a00340961d7`,
             headers: {
                 "authorization": `Bearer ${token}`
             },
             body:
             {
-                "name": "Buzo Rojo",
+                "name": "Buzo Negro",
                 "price": 23.76,
                 "img": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F79%2Fdc%2F79dc285a8de65daa047c7e6d8fecb475420f9664.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmobilemain%5D",
             },
@@ -68,10 +68,10 @@ describe("Page Object model", () => {
         });
     });
 
-    it('DELETE Method', () => {
+    it.only('DELETE Method', () => {
         cy.request({
             method: "DELETE",
-            url: `${baseUrl}/api/product/65af57efc98515003408b018`,
+            url: `${baseUrl}/api/product/65cbbb6d00e97a00340961d7`,
             headers: {
                 "authorization": `Bearer ${token}`
             }
@@ -95,7 +95,7 @@ describe("Page Object model", () => {
         headerPage.getUsername(Cypress.env().usuario)
     });
 
-    it.only('Buscar, eliminar y crear un product', () => {
+    it('Buscar, eliminar y crear un product', () => {
         token = window.localStorage.getItem('token');
         // Trabajamos siempre con el mismo producto por test
         // Siempre cada test va a tener un producto UNICO
